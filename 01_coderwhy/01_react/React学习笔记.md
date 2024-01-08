@@ -285,8 +285,6 @@ PS D:\04_GitHub\react\learn-react\learn-react\01_coderwhy\01_react\09_learn-redu
 </html>
 ```
 
-
-
 ### 生成代码片段
 
 > https://snippet-generator.app
@@ -310,6 +308,54 @@ PS D:\04_GitHub\react\learn-react\learn-react\01_coderwhy\01_react\09_learn-redu
 
 
 ![image-20240108131044625](D:\04_GitHub\react\learn-react\learn-react\01_coderwhy\01_react\assets\image-20240108131044625.png)
+
+
+
+
+
+### javascript模板
+
+待生成代码片段
+
+```
+import React, { PureComponent } from 'react';
+
+export default class App extends PureComponent {
+  render() {
+    return (
+      <div>
+        App
+      </div>
+    )
+  }
+}
+```
+
+javascript.json
+
+```
+{
+	"react pure component": {
+	"prefix": "rpc",
+	"body": [
+		"import React, { PureComponent } from 'react';",
+		"",
+		"export default class App extends PureComponent {",
+		"  render() {",
+		"    return (",
+		"      <div>",
+		"        App",
+		"      </div>",
+		"    )",
+		"  }",
+		"}",
+		""
+	],
+	"description": "react pure component"
+	}
+
+}
+```
 
 
 
@@ -412,8 +458,39 @@ PS D:\04_GitHub\react\learn-react\learn-react\01_coderwhy\01_react\09_learn-redu
 
 
 
+
+
+```
+10_react-redux_01
+```
+
+
+
 # 18_19_React-router的使用
 # 20_21_22_React-Hooks
+
+
+
+### 版本1 10_react-redux_01
+
+#### 项目结构
+
+![image-20240108150406238](D:\04_GitHub\react\learn-react\learn-react\01_coderwhy\01_react\assets\image-20240108150406238.png)
+
+#### 运行结果
+
+ ![image-20240108150236990](D:\04_GitHub\react\learn-react\learn-react\01_coderwhy\01_react\assets\image-20240108150236990.png)
+
+
+
+
+
+
+
+
+
+
+
 # 23_24_网易云项目实战
 # 30_React-SSR
 # 项目自动化部署
