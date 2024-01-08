@@ -471,21 +471,137 @@ PS D:\04_GitHub\react\learn-react\learn-react\01_coderwhy\01_react\09_learn-redu
 
 
 
-### 版本1 10_react-redux_01
+## 版本1 10_react-redux_01
 
-#### 项目结构
+### 项目结构
 
 ![image-20240108150406238](D:\04_GitHub\react\learn-react\learn-react\01_coderwhy\01_react\assets\image-20240108150406238.png)
 
-#### 运行结果
+### 运行结果
 
  ![image-20240108150236990](D:\04_GitHub\react\learn-react\learn-react\01_coderwhy\01_react\assets\image-20240108150236990.png)
 
+## 版本2
 
 
 
+### home.js
+
+```js
+import React, { PureComponent } from 'react';
+
+import store from '../store'
+
+import {
+  addAction
+ } from '../store/actionCreators'
+
+export default class Home extends PureComponent {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      counter: store.getState().counter
+    }
+  }
+
+  componentDidMount() {
+    this.unsubscribue = store.subscribe(()=> {
+      this.setState({
+        counter: store.getState().counter
+      })
+    })
+  }
+
+  componentWillUnmount() {
+     this.unsubscribue();
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>Home</h1>
+        <h2>当前计数：{this.state.counter}</h2>
+        <button onClick={e => this.increment()}>1</button>
+        <button onClick={e => this.addNumber(5)}>5</button>
+      </div>
+    )
+  }
+
+  increment() {
+    console.log("increment");
+    store.dispatch(addAction(1))
+  }
+
+  addNumber(num) {
+    console.log("addNumber");
+    store.dispatch(addAction(num))
+  }
+
+}
+```
+
+### about.js
+
+```js
+import React, { PureComponent } from 'react';
+
+import store from '../store'
+
+import {
+  subAction
+} from '../store/actionCreators'
 
 
+export default class About extends PureComponent {
+  
+  constructor(props) {
+    super(props);
+    this.state = {
+      counter: store.getState().counter
+    }
+  }
+
+  componentDidMount() {
+    this.unsubscribue = store.subscribe(()=> {
+      this.setState({
+        counter: store.getState().counter
+      })
+    })
+  }
+
+  componentWillUnmount() {
+     this.unsubscribue();
+  }
+  render() {
+    return (
+      <div>
+        <hr></hr>
+        <h1>About</h1>
+        <h2>当前计数：{this.state.counter}</h2>
+        <button onClick={e => this.decrement()}>-1</button>
+        <button onClick={e => this.subNumber(5)}>-5</button>
+      </div>
+    )
+  }
+
+  decrement() {
+    console.log("increment");
+    store.dispatch(subAction(1))
+  }
+
+  subNumber(num) {
+    console.log("addNumber");
+    store.dispatch(subAction(num))
+  }
+}
+```
+
+
+
+### 运行效果
+
+ ![image-20240108155030675](D:\04_GitHub\react\learn-react\learn-react\01_coderwhy\01_react\assets\image-20240108155030675.png)
 
 
 
