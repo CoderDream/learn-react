@@ -135,31 +135,96 @@ Done in 15.13s.
 
 # 第15_16_17课 Redux的使用
 
-
-
-
-
-
+### 项目09_learn-redux
 
 ```
-yarn install redux@4.0.5
+// 1.导入redux(不能通过ES6的方式)
 
-yarn add redux@4.0.5
+// import/export 13.2.0开始支持
 
-PS D:\04_GitHub\react\资料day01~day30\课堂\code\09_learn-redux> yarn install            
-yarn install v1.22.19
-warning ..\..\..\..\package.json: No license field
-[1/4] Resolving packages...
-[2/4] Fetching packages...
-[3/4] Linking dependencies...
-[4/4] Building fresh packages...
-Done in 0.24s.
-PS D:\04_GitHub\react\资料day01~day30\课堂\code\09_learn-redux> node .\basic_redux.js   
+// commonjs一种实现 -> nodejs
+const redux = require('redux');
+
+const initialState = {
+  counter: 0
+}
+
+// reducer
+function reducer(state = initialState, action) {
+  switch (action.type) {
+    case "INCREMENT":
+      return { ...state, counter: state.counter + 1 }
+    case "DECREMENT":
+      return { ...state, counter: state.counter - 1 }
+    case "ADD_NUMBER":
+      return { ...state, counter: state.counter + action.num }
+    case "SUB_NUMBER":
+      return { ...state, counter: state.counter - action.num }
+    default:
+      return state;
+  }
+}
+
+// store(创建的时候需要传入一个reducer)
+const store = redux.createStore(reducer)
+
+// 订阅store的修改
+store.subscribe(() => {
+  console.log("counter:", store.getState().counter);
+})
+
+// actions
+const action1 = { type: "INCREMENT" };
+const action2 = { type: "DECREMENT" };
+
+const action3 = { type: "ADD_NUMBER", num: 5 };
+const action4 = { type: "SUB_NUMBER", num: 12 };
+
+// 派发action
+store.dispatch(action1);
+store.dispatch(action2);
+store.dispatch(action2);
+store.dispatch(action3);
+store.dispatch(action4);
+```
+
+### 运行报错
+
+```
+PS D:\04_GitHub\react\learn-react\learn-react\01_coderwhy\01_react\09_learn-redux> node .\basic_redux.js
+file:///D:/04_GitHub/react/learn-react/learn-react/01_coderwhy/01_react/09_learn-redux/basic_redux.js:6
+const redux = require('redux');
+              ^
+
+ReferenceError: require is not defined
+    at file:///D:/04_GitHub/react/learn-react/learn-react/01_coderwhy/01_react/09_learn-redux/basic_redux.js:6:15
+    at ModuleJob.run (internal/modules/esm/module_job.js:145:37)
+    at async Loader.import (internal/modules/esm/loader.js:182:24)
+    at async Object.loadESM (internal/process/esm_loader.js:68:5)
+PS D:\04_GitHub\react\learn-react\learn-react\01_coderwhy\01_react\09_learn-redux>
+```
+
+### 解决运行错误
+
+>  完美解决 node.js 模块化后报错 ReferenceError: require is not defined
+>
+> https://blog.csdn.net/qq_38977714/article/details/117252524
+
+```
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+```
+
+### 运行结果
+
+```
+PS D:\04_GitHub\react\learn-react\learn-react\01_coderwhy\01_react\09_learn-redux> node .\basic_redux.js
 counter: 1
 counter: 0
 counter: -1
 counter: 4
 counter: -8
+PS D:\04_GitHub\react\learn-react\learn-react\01_coderwhy\01_react\09_learn-redux>
 ```
 
 
@@ -170,6 +235,84 @@ counter: -8
 
 # 01_邂逅React开发
 # 02_03_04_JSX核心语法
+
+### 待生成的代码片段
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <div>Header</div>
+
+  <div id="app">dafdasf</div>
+
+  <div>Footer</div>
+  
+  <!-- 添加React的依赖 -->
+  <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+  <script type="text/babel">
+    class App extends React.Component {
+
+      constructor(props) {
+        super(props);
+        this.state = {
+          
+        }        
+      }
+
+      render() {        
+        return (
+          <div>
+            Hello World
+          </div>
+        )
+      }
+    }
+
+    ReactDOM.render(<App/>, document.getElementById("app"));
+  </script>
+
+</body>
+</html>
+```
+
+
+
+### 生成代码片段
+
+> https://snippet-generator.app
+>
+> 
+
+### 输入
+
+![image-20240108131017318](D:\04_GitHub\react\learn-react\learn-react\01_coderwhy\01_react\assets\image-20240108131017318.png)
+
+
+
+![image-20240108130839214](D:\04_GitHub\react\learn-react\learn-react\01_coderwhy\01_react\assets\image-20240108130839214.png)
+
+新建一个html.json，然后把在网站生成的代码放入{} 中：
+
+![image-20240108131151580](D:\04_GitHub\react\learn-react\learn-react\01_coderwhy\01_react\assets\image-20240108131151580.png)
+
+
+
+
+
+![image-20240108131044625](D:\04_GitHub\react\learn-react\learn-react\01_coderwhy\01_react\assets\image-20240108131044625.png)
+
+
+
 # 05_React脚手架
 
 ## 源代码
@@ -246,6 +389,29 @@ To create a production build, use yarn build.
 # 13_axios的使用
 # 14_React过渡动画
 # 15_16_17_Redux的使用
+
+
+
+
+
+```
+PS D:\04_GitHub\react\learn-react\learn-react\01_coderwhy\01_react\09_learn-redux> node .\basic_redux.js
+file:///D:/04_GitHub/react/learn-react/learn-react/01_coderwhy/01_react/09_learn-redux/basic_redux.js:6
+const redux = require('redux');
+              ^
+
+ReferenceError: require is not defined
+    at file:///D:/04_GitHub/react/learn-react/learn-react/01_coderwhy/01_react/09_learn-redux/basic_redux.js:6:15
+    at ModuleJob.run (internal/modules/esm/module_job.js:145:37)
+    at async Loader.import (internal/modules/esm/loader.js:182:24)
+    at async Object.loadESM (internal/process/esm_loader.js:68:5)
+PS D:\04_GitHub\react\learn-react\learn-react\01_coderwhy\01_react\09_learn-redux>
+```
+
+
+
+
+
 # 18_19_React-router的使用
 # 20_21_22_React-Hooks
 # 23_24_网易云项目实战

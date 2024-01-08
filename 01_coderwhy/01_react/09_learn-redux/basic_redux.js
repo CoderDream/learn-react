@@ -3,6 +3,10 @@
 // import/export 13.2.0开始支持
 
 // commonjs一种实现 -> nodejs
+// 完美解决 node.js 模块化后报错 ReferenceError: require is not defined
+// https://blog.csdn.net/qq_38977714/article/details/117252524
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
 const redux = require('redux');
 
 const initialState = {
