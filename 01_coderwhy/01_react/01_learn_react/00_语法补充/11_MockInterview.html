@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+
+  <script>
+    // debugger;
+    function sum(...arr) {
+      let sum = 0;
+      for (i = 0; i < arr.length; i++) {
+        sum += arr[i];
+      }
+
+      return sum;
+    }
+
+    console.log("sum", sum(2, 3, 4, 5));
+
+    function stringIncludes(sentence, str) {
+      // let res = sentence.toLowerCase().indexOf(str.toLowerCase());
+
+      // if(res != -1) {
+      //   return true;
+      // } else {
+      //   return false;
+      // }
+
+      return sentence.toLowerCase().includes(str.toLowerCase());
+
+    }
+
+    console.log("stringIncludes", stringIncludes("I drove to New York in a van with my friend", "new"));
+
+    /**
+     * write a function that takes an array of objects, and returns an array
+     * of the objects "name" property, only if that property exists
+    */
+    function getNames(nameArr) {
+      let res = [];
+
+      // nameArr.forEach((value) => {
+      //   // console.log(value);
+      //   // console.log(typeof value);
+      //   // console.log(key, value.name);
+      //   if (typeof value.name != 'undefined') {
+      //     // console.log(key, value.name);      
+      //     res.push(value.name);
+      //   }
+      // });
+
+      for(let i = 0; i < nameArr.length; i++) {
+        if(nameArr[i].hasOwnProperty("name")) {
+          res.push(nameArr[i].name);
+        }
+      }
+
+      return res;
+    }
+
+    console.log("getNames", getNames([
+      { a: 1 },
+      { name: "Jane" },
+      {},
+      { name: "Mark" },
+      { name: "Sophia" },
+      { b: 2 }
+    ])); // Expects ['Jane', 'Mark', 'Sophia']
+
+
+    /**
+     * Write a function that takes an array of numbers and returns the index
+     * of the largest number
+     */
+    function getLargetstNumberIndex(arr) {
+      let temp = 0;
+      let idx = 0;
+      arr.forEach((value, key) => {
+        if (value >= temp) {
+          // console.log(key, value.name);      
+          temp = value;
+          console.log(key, value, temp);
+          idx = key;
+        }
+      });
+
+      return idx;
+    }
+
+    console.log("getLargestNumberIndex", getLargetstNumberIndex([7, 1, 4, 12, 9])); // Expects 3
+
+    /**
+     * Write a function that returns a promise that resolves after n number of milliseconds
+     * 
+     */
+    // function delay(n) {
+      
+    // }
+
+    // (async()=> {
+    //   console.time("Testing delay");
+    //   await delay(1000);
+    //   console.timeEnd("Testing delay");
+    // })();
+
+
+
+  </script>
+</body>
+
+</html>
