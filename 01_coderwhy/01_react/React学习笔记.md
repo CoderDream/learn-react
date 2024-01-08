@@ -599,11 +599,49 @@ export default class About extends PureComponent {
 
 
 
-### 运行效果
+### 运行效果 
 
  ![image-20240108155030675](D:\04_GitHub\react\learn-react\learn-react\01_coderwhy\01_react\assets\image-20240108155030675.png)
 
 
+
+
+
+![image-20240108185658717](D:\04_GitHub\react\learn-react\learn-react\01_coderwhy\01_react\assets\image-20240108185658717.png)
+
+
+
+
+
+
+
+![image-20240108190641393](D:\04_GitHub\react\learn-react\learn-react\01_coderwhy\01_react\assets\image-20240108190641393.png)
+
+
+
+![image-20240108194126283](D:\04_GitHub\react\learn-react\learn-react\01_coderwhy\01_react\assets\image-20240108194126283.png)
+
+
+
+![image-20240108194151749](D:\04_GitHub\react\learn-react\learn-react\01_coderwhy\01_react\assets\image-20240108194151749.png)
+
+
+
+
+
+
+
+![image-20240108202038888](D:\04_GitHub\react\learn-react\learn-react\01_coderwhy\01_react\assets\image-20240108202038888.png)
+
+
+
+Home获取数据，About展示数据
+
+
+
+ ![image-20240108205140425](D:\04_GitHub\react\learn-react\learn-react\01_coderwhy\01_react\assets\image-20240108205140425.png)
+
+![image-20240108205237082](D:\04_GitHub\react\learn-react\learn-react\01_coderwhy\01_react\assets\image-20240108205237082.png)
 
 
 
