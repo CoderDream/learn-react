@@ -645,6 +645,46 @@ Home获取数据，About展示数据
 
 
 
+### 版本8，使用react-thunk
+
+![image-20240108212524793](D:\04_GitHub\react\learn-react\learn-react\01_coderwhy\01_react\assets\image-20240108212524793.png)
+
+
+
+
+
+
+
+```
+https://githubfast.com/reduxjs/redux-devtools/tree/main/extension#installation
+```
+
+![image-20240108215151104](D:\04_GitHub\react\learn-react\learn-react\01_coderwhy\01_react\assets\image-20240108215151104.png)
+
+
+
+```react
+import { createStore, applyMiddleware, compose } from 'redux';
+
+import thunkMiddleware from 'redux-thunk';
+
+import reducer from './reducer.js';
+
+// 应用一些中间件
+// applyMiddleware(中间件1,中间件2,中间件3)
+const storeEnhancer = applyMiddleware(thunkMiddleware)
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({trace: true}) || compose;
+
+const store = createStore (reducer, composeEnhancers(storeEnhancer));
+
+export default store;
+```
+
+
+
+
+
 # 23_24_网易云项目实战
 # 30_React-SSR
 # 项目自动化部署
